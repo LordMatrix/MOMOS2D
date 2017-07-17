@@ -21,12 +21,12 @@ namespace MOMOS {
 		glEnable(GL_DEPTH_TEST);
 
 		// set up view
-		glViewport(0, 0, 400, 400);
+		glViewport(0, 0, width, height);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 
 		// this creates a canvas you can do 2D drawing on
-		glOrtho(0.0, 800.0, 0.0, 600.0, 0.0, 1.0);
+		glOrtho(0.0, width, 0.0, height, 0.0, 1.0);
 	}
 
 

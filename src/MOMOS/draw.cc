@@ -47,7 +47,14 @@ namespace MOMOS {
 
 
 	void DrawSolidPath(float *pairs_of_points, int num_points, bool stroke) {
-
+		glPointSize(10);
+		glLineWidth(2.5);
+		glColor3f(1.0, 0.0, 0.0);
+		glBegin(GL_TRIANGLES);
+		for (int i = 0; i < num_points; i++) {
+			glVertex2f(pairs_of_points[i*2], pairs_of_points[i*2+1]);
+		}
+		glEnd();
 	}
 
 
