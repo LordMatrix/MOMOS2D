@@ -4,23 +4,23 @@
 namespace MOMOS {
 
 	void DrawBegin() {
-
+		glPointSize(10);
+		glLineWidth(2.5);
 	}
 
 
 	void DrawEnd() {
-		glfwSwapBuffers(win);
-		glfwPollEvents();
+
 	}
 
 
 	void DrawSetStrokeColor(unsigned char R, unsigned char G, unsigned char B, unsigned char Alpha) {
-
+		glColor4f(R, G, B, Alpha);
 	}
 
 
 	void DrawSetFillColor(unsigned char R, unsigned char G, unsigned char B, unsigned char Alpha) {
-
+		glColor4f(R, G, B, Alpha);
 	}
 
 
@@ -31,12 +31,9 @@ namespace MOMOS {
 
 
 	void DrawLine(float x1, float y1, float x2, float y2) {
-		glPointSize(10);
-		glLineWidth(2.5);
-		glColor3f(1.0, 0.0, 0.0);
 		glBegin(GL_LINES);
-		glVertex2f(x1, y1);
-		glVertex2f(x2, y2);
+		glVertex2f(x1, win_height - y1);
+		glVertex2f(x2, win_height - y2);
 		glEnd();
 	}
 
@@ -47,12 +44,9 @@ namespace MOMOS {
 
 
 	void DrawSolidPath(float *pairs_of_points, int num_points, bool stroke) {
-		glPointSize(10);
-		glLineWidth(2.5);
-		glColor3f(1.0, 0.0, 0.0);
-		glBegin(GL_TRIANGLES);
+		glBegin(GL_POLYGON);
 		for (int i = 0; i < num_points; i++) {
-			glVertex2f(pairs_of_points[i*2], pairs_of_points[i*2+1]);
+			glVertex2f(pairs_of_points[i*2], win_height - pairs_of_points[i*2+1]);
 		}
 		glEnd();
 	}

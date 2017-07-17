@@ -7,6 +7,8 @@
 namespace MOMOS {
 
 	extern GLFWwindow* win;
+	extern float win_width;
+	extern float win_height;
 }
 
 #endif

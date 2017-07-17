@@ -3,6 +3,8 @@
 namespace MOMOS {
 
 	GLFWwindow* win = nullptr;
+	float win_width;
+	float win_height;
 
 	void WindowInit(unsigned int width, unsigned int height) {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -27,11 +29,15 @@ namespace MOMOS {
 
 		// this creates a canvas you can do 2D drawing on
 		glOrtho(0.0, width, 0.0, height, 0.0, 1.0);
+
+		win_width = width;
+		win_height = height;
 	}
 
 
 	void WindowFrame() {
-
+		glfwSwapBuffers(win);
+		glfwPollEvents();
 	}
 
 
