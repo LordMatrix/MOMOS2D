@@ -1,9 +1,10 @@
 #include <MOMOS/time.h>
+#include <GLFW/glfw3.h>
 
 namespace MOMOS {
   
 	double Time() {
-		return 0.0;
+		return glfwGetTime();
 	}
 
 

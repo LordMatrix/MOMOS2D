@@ -38,6 +38,7 @@ project "Momos2D"
 		path.join(PROJ_DIR, "include/*.h"),
 		
 		path.join(PROJ_DIR, "include/MOMOS/*.h"),
+		path.join(PROJ_DIR, "include/fontstash/*.h"),
 	}
   
   

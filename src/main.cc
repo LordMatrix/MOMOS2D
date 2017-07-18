@@ -1,4 +1,3 @@
-#include <thread>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -9,6 +8,7 @@
 
 #include "../include/Window.h"
 
+#include <MOMOS/momos.h>
 #include <MOMOS/window.h>
 #include <MOMOS/draw.h>
 #include <MOMOS/math.h>
@@ -36,26 +36,28 @@ int main(int argc, char** argv) {
 
 	MOMOS::WindowInit(800, 600);
 
+	MOMOS::DrawSetTextFont("assets/DroidSerif-Regular.ttf");
+	MOMOS::DrawSetTextSize(124.0f);
 
-	/************** MATH **************/
-
-	MOMOS::Mat3 a = MOMOS::Mat3Identity();
-	//glm::mat3 a = glm::mat3();
-
-
-	/**********************************/
-	
 	float x = 0.1;
 	while (MOMOS::WindowIsOpened()) {
 
 		MOMOS::DrawBegin();
 
 		MOMOS::DrawClear(1.0f, 1.0f, 1.0f, 1.0f);
+
+		/************** FONT **************/
+
+		
+		MOMOS::DrawText(50, 150, "UpBack");
+
+		
+		/**********************************/
+
 		// Draw gears
 		x += 0.001;
 		MOMOS::DrawSetStrokeColor(255, 0, 0, 255);
 		MOMOS::DrawLine(0.0f, 0.0f, 500.0f, 100.0f);
-
 
 		MOMOS::Mat3 loc = MOMOS::Mat3Translate(x*5, x*5);
 		MOMOS::Mat3 rot = MOMOS::Mat3Rotate(x);
@@ -78,6 +80,8 @@ int main(int argc, char** argv) {
 
 		MOMOS::DrawSetFillColor(0, 0, 255, 255);
 		MOMOS::DrawSolidPath(floated_points, 5, false);
+
+		MOMOS::DrawText(50, 450, "DownFront");
 
 		MOMOS::DrawEnd();
 		MOMOS::WindowFrame();
