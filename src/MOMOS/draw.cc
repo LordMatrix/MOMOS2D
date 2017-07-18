@@ -57,7 +57,12 @@ namespace MOMOS {
 
 
 	void DrawPath(float *pairs_of_points, int num_points) {
-
+		glBegin(GL_LINES);
+		for (int i = 0; i < num_points*2 - 2; i+=2) {
+			glVertex2f(pairs_of_points[i], win_height - pairs_of_points[i + 1]);
+			glVertex2f(pairs_of_points[i + 2], win_height - pairs_of_points[i + 3]);
+		}
+		glEnd();
 	}
 
 

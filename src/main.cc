@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
 		MOMOS::Vec2 points[5] = { {-100,-100}, {-100,100}, {100,100}, {100,0}, {-100,-100} };
 
 		float floated_points[10];
-
+		
 		for (int i = 0; i < 5; i++) {
 			const float v_in[2] = { points[i].x, points[i].y };
 			float v_out[2];
@@ -79,6 +79,9 @@ int main(int argc, char** argv) {
 
 		MOMOS::DrawSetFillColor(0, 0, 255, 255);
 		MOMOS::DrawSolidPath(floated_points, 5, false);
+
+		float fixed_points[10] = { 300,300, 300,500, 500,500, 500,400, 300,300 };
+		MOMOS::DrawPath(fixed_points, 5);
 
 		MOMOS::DrawSetFillColor(50, 200, 50, 255);
 		MOMOS::DrawSetTextSize(70.0f);
