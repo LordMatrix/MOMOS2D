@@ -37,7 +37,6 @@ int main(int argc, char** argv) {
 	MOMOS::WindowInit(800, 600);
 
 	MOMOS::DrawSetTextFont("assets/DroidSerif-Regular.ttf");
-	MOMOS::DrawSetTextSize(124.0f);
 
 	float x = 0.1;
 	while (MOMOS::WindowIsOpened()) {
@@ -48,9 +47,9 @@ int main(int argc, char** argv) {
 
 		/************** FONT **************/
 
-		
+		MOMOS::DrawSetFillColor(200, 50, 50, 255);
+		MOMOS::DrawSetTextSize(100.0f);
 		MOMOS::DrawText(50, 150, "UpBack");
-
 		
 		/**********************************/
 
@@ -81,7 +80,9 @@ int main(int argc, char** argv) {
 		MOMOS::DrawSetFillColor(0, 0, 255, 255);
 		MOMOS::DrawSolidPath(floated_points, 5, false);
 
-		MOMOS::DrawText(50, 450, "DownFront");
+		MOMOS::DrawSetFillColor(50, 200, 50, 255);
+		MOMOS::DrawSetTextSize(70.0f);
+		MOMOS::DrawText(50, 50, "DownFront");
 
 		MOMOS::DrawEnd();
 		MOMOS::WindowFrame();

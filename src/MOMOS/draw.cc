@@ -37,6 +37,8 @@ namespace MOMOS {
 
 	void DrawSetFillColor(unsigned char R, unsigned char G, unsigned char B, unsigned char Alpha) {
 		glColor4f(R, G, B, Alpha);
+		unsigned int color = glfonsRGBA(R, G, B, Alpha);
+		fonsSetColor(fs, color);
 	}
 
 
@@ -80,6 +82,7 @@ namespace MOMOS {
 		if (font == FONS_INVALID) {
 			printf("Could not add font normal.\n");
 		}
+		fonsSetFont(fs, font);
 	}
 
 
@@ -95,46 +98,20 @@ namespace MOMOS {
 
 	void DrawText(float x, float y, const char *text) {
 
-
-		/************** FONT **************/
-		
-
-		/**********************************/
-
-
-		float sx, sy, dx, dy, lh = 0;
-
 		// Update and render
-		glViewport(0, 0, MOMOS::win_width, MOMOS::win_height);
-		//glClearColor(0.3f, 0.3f, 0.32f, 1.0f);
-		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glDisable(GL_TEXTURE_2D);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		//glOrtho(0.0, width, 0.0, height, 0.0, 1.0);
-		glOrtho(0, 800, 600, 0, -1, 1);
-
-
+		glOrtho(0, win_width, win_height, 0, -1, 1);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		glDisable(GL_DEPTH_TEST);
-		glColor4ub(255, 255, 255, 255);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_CULL_FACE);
 
-		unsigned int blue = glfonsRGBA(0, 192, 255, 255);
-
-		
-		fonsVertMetrics(fs, NULL, NULL, &lh);
-
-		fonsSetSize(fs, 124.0f);
-		fonsSetFont(fs, font);
-		fonsSetColor(fs, blue);
-		dx = fonsDrawText(fs, x, y, text, NULL);
+		fonsDrawText(fs, x, y, text, NULL);
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
