@@ -17,13 +17,17 @@ namespace MOMOS {
   struct Mat4 { float d[16]; };
 
   Mat3 Mat3Multiply(const Mat3 &a, const Mat3 &b);
+  void Mat3Multiply(const Mat3 &a, const Mat3 &b, Mat3* c);
   Mat3 Mat3Identity();
   Mat3 Mat3Translate(float translate_x, float translate_y);
+  void Mat3InitAsTranslate(float x, float y, Mat3* mat);
   Mat3 Mat3Rotate(float radians);
+  void Mat3InitAsRotate(float radians, Mat3* mat);
   Mat3 Mat3Scale(float scale_x, float scale_y);
   Mat3 Mat3FromColumns(const float data[9]);
   Vec3 Mat3TransformVec3(const Mat3 &a, const Vec3 &v);
   Vec2 Mat3TransformVec2(const Mat3 &a, const Vec2  &v);
+  void Mat3TransformVec2(const Mat3 &a, const float v[2], float v_output[2]);
   
   Mat4 Mat4Multiply(const Mat4 &a, const Mat4 &b);
   Mat4 Mat4Identity();

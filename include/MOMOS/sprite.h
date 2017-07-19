@@ -35,7 +35,7 @@ namespace MOMOS {
 
   void DrawSpriteWithMatrix(SpriteHandle img, const float tranform_matrix[9]);
 
-  // Draws an Sprite with ESAT::Mat3 as input
+  // Draws an Sprite with MOMOS::Mat3 as input
   void DrawSpriteWithMatrix(SpriteHandle img, const MOMOS::Mat3 &m);
 
   struct SpriteTransform {

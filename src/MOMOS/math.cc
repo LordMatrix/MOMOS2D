@@ -25,6 +25,9 @@ namespace MOMOS {
 		return momos_mat;
 	}
 
+	void Mat3Multiply(const Mat3 &a, const Mat3 &b, Mat3 &c) {
+		c = Mat3Multiply(a, b);
+	}
 
 	Mat3 Mat3Identity() {
 		Mat3 momos_mat;
@@ -48,6 +51,11 @@ namespace MOMOS {
 	}
 
 
+	void Mat3InitAsTranslate(float x, float y, Mat3* mat) {
+		*mat = Mat3Translate(x, y);
+	}
+
+
 	Mat3 Mat3Rotate(float radians) {
 		Mat3 momos_mat = Mat3Identity();
 		momos_mat.d[0] = cos(radians);
@@ -56,6 +64,11 @@ namespace MOMOS {
 		momos_mat.d[4] = cos(radians);
 
 		return momos_mat;
+	}
+
+
+	void Mat3InitAsRotate(float radians, Mat3* mat) {
+		*mat = Mat3Rotate(radians);
 	}
 
 
@@ -84,6 +97,16 @@ namespace MOMOS {
 	Vec2 Mat3TransformVec2(const Mat3 &a, const Vec2  &v) {
 		Vec2 momos_vec;
 		return momos_vec;
+	}
+
+
+	void Mat3TransformVec2(const Mat3 &a, const float v[2], float v_output[2]) {
+		Vec2 v_in = { v[0], v[1] };
+		Vec2 v_out;
+
+		v_out = Mat3TransformVec2(a, v_in);
+		v_output[0] = v_out.x;
+		v_output[1] = v_out.y;
 	}
 
 
