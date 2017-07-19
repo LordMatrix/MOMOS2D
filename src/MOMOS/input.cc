@@ -6,12 +6,17 @@ namespace MOMOS {
 	// -- Keyboard ------------------------------------------
 
 	bool IsKeyPressed(char key) {
-		return false;
+		int status = glfwGetKey(win, key);
+		return (status == GLFW_PRESS);
 	}
 
 
 	bool IsKeyDown(char key) {
-		return false;
+		bool is_up = last_key_pressed == key;// && isKeyPressed(key);
+		//Consume key if it's down
+		if (is_up)
+			last_key_pressed = -1;
+		return is_up;
 	}
 
 
@@ -21,12 +26,17 @@ namespace MOMOS {
 
 
 	bool IsSpecialKeyPressed(SpecialKey key) {
-		return false;
+		int status = glfwGetKey(win, key);
+		return (status == GLFW_PRESS);
 	}
 
 
 	bool IsSpecialKeyDown(SpecialKey key) {
-		return false;
+		bool is_up = last_key_pressed == key;// && isKeyPressed(key);
+		//Consume key if it's down
+		if (is_up)
+			last_key_pressed = -1;
+		return is_up;
 	}
 
 
@@ -36,7 +46,9 @@ namespace MOMOS {
 
 
 	char GetNextPressedKey() {
-		return 0;
+		char rt = last_key_pressed;
+		last_key_pressed = -1;
+		return rt;
 	}
 
 
@@ -48,12 +60,16 @@ namespace MOMOS {
 	// -- Mouse ---------------------------------------------
 
 	double MousePositionX() {
-		return 0.0;
+		double x, y;
+		glfwGetCursorPos(win, &x, &y);
+		return x;
 	}
 
 
 	double MousePositionY() {
-		return 0.0;
+		double x, y;
+		glfwGetCursorPos(win, &x, &y);
+		return y;
 	}
 
 
@@ -73,7 +89,15 @@ namespace MOMOS {
 
 
 	bool MouseButtonDown(int button_id) {
-		return false;
+		switch (button_id) {
+		case 0:
+			return mouserightdown;
+			break;
+		case 1:
+		default:
+			return mouseleftdown;
+			break;
+		}
 	}
 
 

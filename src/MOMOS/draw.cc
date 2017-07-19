@@ -114,7 +114,7 @@ namespace MOMOS {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		glDisable(GL_DEPTH_TEST);
-		glEnable(GL_CULL_FACE);
+		//glEnable(GL_CULL_FACE);
 
 		fonsDrawText(fs, x, y, text, NULL);
 

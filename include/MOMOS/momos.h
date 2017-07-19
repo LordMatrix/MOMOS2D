@@ -9,6 +9,10 @@ namespace MOMOS {
 	extern GLFWwindow* win;
 	extern float win_width;
 	extern float win_height;
+
+	extern bool mouseleftdown;
+	extern bool mouserightdown;
+	extern int last_key_pressed;
 }
 
 #endif
