@@ -23,6 +23,8 @@ project "Momos2D"
 		path.join(PROJ_DIR, "src/deps/glew2_0_0/include/"),
 		path.join(PROJ_DIR, "src/deps/glew2_0_0/src/"),
 		path.join(PROJ_DIR, "src/deps/glm-0_9_8_1/"),
+		
+		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/include/"),
 	}
 
 	files {
@@ -38,6 +40,11 @@ project "Momos2D"
 		path.join(PROJ_DIR, "include/*.h"),
 		
 		path.join(PROJ_DIR, "include/MOMOS/*.h"),
+		path.join(PROJ_DIR, "include/MOMOS_extra/*.h"),
+		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/include/chipmunk/*.h"),
+		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/src/*.h"),
+		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/src/*.c"),
+		path.join(PROJ_DIR, "src/MOMOS_extra/chipmunk/*.c"),
 		path.join(PROJ_DIR, "include/fontstash/*.h"),
 	}
   
@@ -62,7 +69,10 @@ project "Momos2D"
 		   "src/deps/glfw3_2_1/src/wl_window.c",
 		   
 		   "src/deps/glew2_0_0/src/glewinfo.c",
-		   "src/deps/glew2_0_0/src/visualinfo.c"
+		   "src/deps/glew2_0_0/src/visualinfo.c",
+		   
+		   "src/deps/chipmunk-7.0.1/src/cpHastySpace.c",
+		   "src/deps/chipmunk-7.0.1/src/cpPolyline.c",
 		}
 		links { "opengl32", "kernel32", "user32", "gdi32", "winspool", "shell32", 
 						"ole32", "oleaut32", "uuid", "comdlg32", "advapi32", "winmm" }
@@ -91,6 +101,7 @@ project "Momos2D"
 			"ALURE_BUILD_LIBRARY",
 			"_DEBUG",
 			"GLEW_STATIC",
+			"CMAKE_USE_WIN32_THREADS_INIT",
 		}
 
 	configuration { "windows", "Debug" }

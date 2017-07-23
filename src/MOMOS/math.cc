@@ -25,8 +25,8 @@ namespace MOMOS {
 		return momos_mat;
 	}
 
-	void Mat3Multiply(const Mat3 &a, const Mat3 &b, Mat3 &c) {
-		c = Mat3Multiply(a, b);
+	void Mat3Multiply(const Mat3 &a, const Mat3 &b, Mat3* c) {
+		*c = Mat3Multiply(a, b);
 	}
 
 	Mat3 Mat3Identity() {
@@ -96,6 +96,10 @@ namespace MOMOS {
 
 	Vec2 Mat3TransformVec2(const Mat3 &a, const Vec2  &v) {
 		Vec2 momos_vec;
+		float v_in[2] = {v.x, v.y};
+		float v_out[2];
+		Mat3TransformRawVec2(a, v_in, v_out);
+		momos_vec = { v_out[0], v_out[1] };
 		return momos_vec;
 	}
 

@@ -16,7 +16,7 @@ namespace MOMOS {
 		if (action == GLFW_PRESS)
 			last_key_pressed = key;
 
-		printf("%d\n", last_key_pressed);
+		//printf("%d\n", last_key_pressed);
 	}
 
 
