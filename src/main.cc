@@ -42,6 +42,7 @@ int main(int argc, char** argv) {
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 	// Load textures
 	ResourceManager::LoadTexture("src/JanKenPon/assets/flags/CRO.jpg", GL_TRUE, "face");
+	ResourceManager::LoadTexture("src/JanKenPon/assets/flags/ESAT.jpg", GL_TRUE, "esat");
 	// Set render-specific controls
 	SpriteRenderer* Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 
@@ -75,7 +76,7 @@ int main(int argc, char** argv) {
 	glBindVertexArray(0);
 
 
-
+	
 
 	float x = 0.1;
 	while (MOMOS::WindowIsOpened()) {
@@ -84,8 +85,8 @@ int main(int argc, char** argv) {
 
 		MOMOS::DrawClear(1.0f, 1.0f, 1.0f, 1.0f);
 
-		Renderer->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200, 200), glm::vec2(300, 400), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-
+		Renderer->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200, 200), glm::vec2(30, 40), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		
 		/************** FONT **************/
 
 		MOMOS::DrawSetFillColor(200, 50, 50, 255);
@@ -93,6 +94,10 @@ int main(int argc, char** argv) {
 		MOMOS::DrawText(50, 150, "UpBack");
 
 		/**********************************/
+
+
+		Renderer->DrawSprite(ResourceManager::GetTexture("esat"), glm::vec2(300, 400), glm::vec2(60, 40), 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+
 
 		// Draw gears
 		x += 0.001;

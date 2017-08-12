@@ -39,6 +39,12 @@ void Shader::Compile(const GLchar* vertexSource, const GLchar* fragmentSource, c
     // Delete the shaders as they're linked into our program now and no longer necessery
     glDeleteShader(sVertex);
     glDeleteShader(sFragment);
+	
+	glDetachShader(this->ID, sVertex);
+	glDetachShader(this->ID, sFragment);
+	if (geometrySource != nullptr)
+		glDetachShader(this->ID, gShader);
+
     if (geometrySource != nullptr)
         glDeleteShader(gShader);
 }

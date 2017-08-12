@@ -35,6 +35,9 @@ void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec
 	glBindVertexArray(this->quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+
+	//Set back default program
+	glUseProgram(0);
 }
 
 void SpriteRenderer::initRenderData()
