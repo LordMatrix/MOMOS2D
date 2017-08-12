@@ -33,60 +33,34 @@ int main(int argc, char** argv) {
 
 
 
+	ResourceManager::initSpriteShader();
 
-	// Load shaders
-	ResourceManager::LoadShader("src/MOMOS/shaders/sprite.vs", "src/MOMOS/shaders/sprite.frag", nullptr, "sprite");
-	// Configure shaders
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(800.0f), static_cast<GLfloat>(600.0f), 0.0f, -1.0f, 1.0f);
-	ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
-	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-	// Load textures
-	ResourceManager::LoadTexture("src/JanKenPon/assets/flags/CRO.jpg", GL_TRUE, "face");
-	ResourceManager::LoadTexture("src/JanKenPon/assets/flags/ESAT.jpg", GL_TRUE, "esat");
-	// Set render-specific controls
-	SpriteRenderer* Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+	MOMOS::SpriteHandle sprite = MOMOS::SpriteFromFile("src/JanKenPon/assets/flags/CRO.jpg");
+
+
+	
+	
 
 
 	/************************************************/
 
 
-	// Configure VAO/VBO
-	GLuint VBO, quadVAO;
-	GLfloat vertices[] = {
-		// Pos      // Tex
-		0.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 0.0f, 0.0f,
-
-		0.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, 1.0f, 1.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f
-	};
-
-	glGenVertexArrays(1, &quadVAO);
-	glGenBuffers(1, &VBO);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glBindVertexArray(quadVAO);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	
 
 
 	
 
-	float x = 0.1;
+	float x = 0.1f;
 	while (MOMOS::WindowIsOpened()) {
 
 		MOMOS::DrawBegin();
 
 		MOMOS::DrawClear(1.0f, 1.0f, 1.0f, 1.0f);
 
-		Renderer->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200, 200), glm::vec2(30, 40), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-		
+
+		MOMOS::DrawSprite(sprite, 200, 200);
+
+
 		/************** FONT **************/
 
 		MOMOS::DrawSetFillColor(200, 50, 50, 255);
@@ -96,11 +70,8 @@ int main(int argc, char** argv) {
 		/**********************************/
 
 
-		Renderer->DrawSprite(ResourceManager::GetTexture("esat"), glm::vec2(300, 400), glm::vec2(60, 40), 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-
-
 		// Draw gears
-		x += 0.001;
+		x += 0.001f;
 		MOMOS::DrawSetStrokeColor(255, 0, 0, 255);
 		MOMOS::DrawLine(0.0f, 0.0f, 500.0f, 100.0f);
 

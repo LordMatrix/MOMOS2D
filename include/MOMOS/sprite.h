@@ -9,6 +9,8 @@
 #define MOMOS_SPRITE_H 1
 
 #include <MOMOS/math.h>
+#include <MOMOS/sprite_renderer.h>
+#include <MOMOS/resource_manager.h>
 
 namespace MOMOS {
 

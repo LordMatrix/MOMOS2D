@@ -4,6 +4,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+class SpriteRenderer;
+
 namespace MOMOS {
 
 	extern GLFWwindow* win;
@@ -15,6 +17,9 @@ namespace MOMOS {
 	extern bool mouseleftup;
 	extern bool mouserightup;
 	extern int last_key_pressed;
+
+	//Global sprite renderer
+	extern SpriteRenderer* renderer;
 }
 
 #endif

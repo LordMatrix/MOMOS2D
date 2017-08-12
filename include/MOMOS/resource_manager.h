@@ -5,6 +5,7 @@
 #include <string>
 
 #include <GL/glew.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "texture.h"
 #include "shader.h"
@@ -31,6 +32,9 @@ public:
     static Texture2D GetTexture(std::string name);
     // Properly de-allocates all loaded resources
     static void      Clear();
+
+	//Inits default sprite shader
+	static void initSpriteShader();
 private:
     // Private constructor, that is we do not want any actual resource manager objects. Its members and functions should be publicly available (static).
     ResourceManager() { }
