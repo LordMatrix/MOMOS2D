@@ -25,6 +25,7 @@ project "Momos2D"
 		path.join(PROJ_DIR, "src/deps/glm-0_9_8_1/"),
 		
 		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/include/"),
+		path.join(PROJ_DIR, "src/deps/SOIL/src/"),
 	}
 
 	files {
@@ -44,8 +45,10 @@ project "Momos2D"
 		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/include/chipmunk/*.h"),
 		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/src/*.h"),
 		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/src/*.c"),
-		path.join(PROJ_DIR, "src/MOMOS_extra/chipmunk/*.c"),
 		path.join(PROJ_DIR, "include/fontstash/*.h"),
+		
+		path.join(PROJ_DIR, "src/deps/SOIL/src/*.c"),
+		path.join(PROJ_DIR, "src/deps/SOIL/src/*.h"),
 	}
   
   
@@ -75,7 +78,7 @@ project "Momos2D"
 		   "src/deps/chipmunk-7.0.1/src/cpPolyline.c",
 		}
 		links { "opengl32", "kernel32", "user32", "gdi32", "winspool", "shell32", 
-						"ole32", "oleaut32", "uuid", "comdlg32", "advapi32", "winmm" }
+						"ole32", "oleaut32", "uuid", "comdlg32", "advapi32", "winmm", "ws2_32" }
 		defines {
 			"_GLFW_WIN32",
 			"_GLFW_USE_OPENGL",

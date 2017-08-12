@@ -102,7 +102,25 @@ namespace MOMOS {
 
 
 	bool MouseButtonUp(int button_id) {
-		return false;
+		switch (button_id) {
+		case 0:
+			if (mouserightup) {
+				mouserightup = false;
+				return true;
+			} else {
+				return false;
+			}
+			break;
+		case 1:
+		default:
+			if (mouseleftup) {
+				mouseleftup = false;
+				return true;
+			} else {
+				return false;
+			}
+			break;
+		}
 	}
 
 }

@@ -1,5 +1,12 @@
 #include <MOMOS/sprite.h>
 
+#include <glm/glm.hpp>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include <MOMOS/shader.h>
+#include <MOMOS/texture.h>
+
 namespace MOMOS {
 
 	SpriteHandle SpriteFromFile(const char *path) {

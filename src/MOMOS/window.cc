@@ -10,6 +10,8 @@ namespace MOMOS {
 
 	bool mouseleftdown = false;
 	bool mouserightdown = false;
+	bool mouseleftup = false;
+	bool mouserightup = false;
 	int last_key_pressed = -1;
 
 	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -24,16 +26,18 @@ namespace MOMOS {
 		switch (action) {
 		case GLFW_PRESS:
 			if (button == GLFW_MOUSE_BUTTON_LEFT) {
+				mouseleftup = false;
 				mouseleftdown = true;
 			} else {
+				mouserightup = false;
 				mouserightdown = true;
 			}
 			break;
 		case GLFW_RELEASE:
 			if (button == GLFW_MOUSE_BUTTON_LEFT) {
-				mouseleftdown = false;
+				mouseleftup = true;
 			} else {
-				mouserightdown = false;
+				mouserightup = true;
 			}
 			break;
 		}
@@ -90,12 +94,12 @@ namespace MOMOS {
 
 
 	unsigned int WindowHeight() {
-		return 0;
+		return win_height;
 	}
 
 
 	unsigned int WindowWidth() {
-		return 0;
+		return win_width;
 	}
 
 	/*

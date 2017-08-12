@@ -12,6 +12,8 @@ namespace MOMOS {
 
 	extern bool mouseleftdown;
 	extern bool mouserightdown;
+	extern bool mouseleftup;
+	extern bool mouserightup;
 	extern int last_key_pressed;
 }
 
