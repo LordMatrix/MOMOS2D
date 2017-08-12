@@ -9,8 +9,15 @@
 
 namespace MOMOS {
 
+	SpriteRenderer* renderer;
+
 	SpriteHandle SpriteFromFile(const char *path) {
-		return nullptr;
+		// Load textures
+		Texture2D* texture = ResourceManager::LoadTexture(path, GL_TRUE, path);
+		// Set render-specific controls
+		MOMOS::renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+
+		return texture;
 	}
 
 
@@ -50,7 +57,8 @@ namespace MOMOS {
 
 
 	void DrawSprite(SpriteHandle img, float x, float y) {
-
+		Texture2D* tex = static_cast<Texture2D*>(img);
+		MOMOS::renderer->DrawSprite(*tex, glm::vec2(x,y), glm::vec2(tex->Width, tex->Height), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 	}
 
 

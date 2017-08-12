@@ -11,6 +11,9 @@ Texture2D::Texture2D()
 
 void Texture2D::Generate(GLuint width, GLuint height, unsigned char* data)
 {
+	//Cache data pointer
+	this->data = data;
+
     this->Width = width;
     this->Height = height;
     // Create Texture

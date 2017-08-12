@@ -22,10 +22,10 @@ Shader ResourceManager::GetShader(std::string name)
     return Shaders[name];
 }
 
-Texture2D ResourceManager::LoadTexture(const GLchar *file, GLboolean alpha, std::string name)
+Texture2D* ResourceManager::LoadTexture(const GLchar *file, GLboolean alpha, std::string name)
 {
     Textures[name] = loadTextureFromFile(file, alpha);
-    return Textures[name];
+    return &Textures[name];
 }
 
 Texture2D ResourceManager::GetTexture(std::string name)
@@ -104,4 +104,14 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
     // And finally free image data
     SOIL_free_image_data(image);
     return texture;
+}
+
+
+void ResourceManager::initSpriteShader() {
+	// Load shaders
+	ResourceManager::LoadShader("src/MOMOS/shaders/sprite.vs", "src/MOMOS/shaders/sprite.frag", nullptr, "sprite");
+	// Configure shaders
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(800.0f), static_cast<GLfloat>(600.0f), 0.0f, -1.0f, 1.0f);
+	ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
+	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 }

@@ -35,7 +35,8 @@ int main(int argc, char** argv) {
 
 	ResourceManager::initSpriteShader();
 
-	MOMOS::SpriteHandle sprite = MOMOS::SpriteFromFile("src/JanKenPon/assets/flags/CRO.jpg");
+	MOMOS::SpriteHandle cro = MOMOS::SpriteFromFile("src/JanKenPon/assets/flags/CRO.jpg");
+	MOMOS::SpriteHandle esat = MOMOS::SpriteFromFile("src/JanKenPon/assets/flags/ESAT.jpg");
 
 
 	
@@ -58,7 +59,8 @@ int main(int argc, char** argv) {
 		MOMOS::DrawClear(1.0f, 1.0f, 1.0f, 1.0f);
 
 
-		MOMOS::DrawSprite(sprite, 200, 200);
+		MOMOS::DrawSprite(cro, 100, 200);
+		MOMOS::DrawSprite(esat, 200, 100);
 
 
 		/************** FONT **************/
