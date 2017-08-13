@@ -82,6 +82,11 @@ namespace MOMOS {
 	}
 
 
+	void Mat3InitAsScale(float scale_x, float scale_y, Mat3* mat) {
+		*mat = Mat3Scale(scale_x, scale_y);
+	}
+
+
 	Mat3 Mat3FromColumns(const float data[9]) {
 		Mat3 momos_mat;
 		return momos_mat;

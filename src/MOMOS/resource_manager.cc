@@ -5,6 +5,7 @@
 #include <fstream>
 
 #include <SOIL.h>
+#include <MOMOS/momos.h>
 
 // Instantiate static variables
 std::map<std::string, Texture2D>    ResourceManager::Textures;
@@ -99,11 +100,18 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar *file, GLboolean alp
     // Load image
     int width, height;
     unsigned char* image = SOIL_load_image(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
-    // Now generate texture
-    texture.Generate(width, height, image);
-    // And finally free image data
-    SOIL_free_image_data(image);
-    return texture;
+
+	//Print errors
+	if (image) {
+		// Now generate texture
+		texture.Generate(width, height, image);
+		// And finally free image data
+		SOIL_free_image_data(image);
+	} else {
+		printf("Can't load %s\n", file);
+	}
+
+	return texture;
 }
 
 
@@ -111,7 +119,7 @@ void ResourceManager::initSpriteShader() {
 	// Load shaders
 	ResourceManager::LoadShader("src/MOMOS/shaders/sprite.vs", "src/MOMOS/shaders/sprite.frag", nullptr, "sprite");
 	// Configure shaders
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(800.0f), static_cast<GLfloat>(600.0f), 0.0f, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(MOMOS::win_width), static_cast<GLfloat>(MOMOS::win_height), 0.0f, -1.0f, 1.0f);
 	ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 }

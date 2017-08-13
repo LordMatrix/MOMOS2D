@@ -42,12 +42,14 @@ namespace MOMOS {
 
 
 	int SpriteHeight(SpriteHandle img) {
-		return 0;
+		Texture2D* tex = static_cast<Texture2D*>(img);
+		return tex->Height;
 	}
 
 
 	int SpriteWidth(SpriteHandle img) {
-		return 0;
+		Texture2D* tex = static_cast<Texture2D*>(img);
+		return tex->Width;
 	}
 
 
@@ -62,13 +64,15 @@ namespace MOMOS {
 	}
 
 
-	void DrawSpriteWithMatrix(SpriteHandle img, const float tranform_matrix[9]) {
-
+	void DrawSpriteWithMatrix(SpriteHandle img, const float transform_matrix[9]) {
+		Texture2D* tex = static_cast<Texture2D*>(img);
+		MOMOS::renderer->DrawSprite(*tex, glm::vec2(transform_matrix[2], transform_matrix[5]), glm::vec2(tex->Width*transform_matrix[0], tex->Height*transform_matrix[3]), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 	}
 
 
 	void DrawSpriteWithMatrix(SpriteHandle img, const MOMOS::Mat3 &m) {
-
+		Texture2D* tex = static_cast<Texture2D*>(img);
+		MOMOS::renderer->DrawSprite(*tex, glm::vec2(m.d[2], m.d[5]), glm::vec2(tex->Width*m.d[0], tex->Height*m.d[3]), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
 	}
 
 

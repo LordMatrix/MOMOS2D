@@ -35,7 +35,7 @@ namespace MOMOS {
   // M = | m2 m5 m8 |  --> m = [m1,m2,m3,m4,m5,m6,m7,m8,m9]
   //     | m3 m6 m9 |
 
-  void DrawSpriteWithMatrix(SpriteHandle img, const float tranform_matrix[9]);
+  void DrawSpriteWithMatrix(SpriteHandle img, const float transform_matrix[9]);
 
   // Draws an Sprite with MOMOS::Mat3 as input
   void DrawSpriteWithMatrix(SpriteHandle img, const MOMOS::Mat3 &m);

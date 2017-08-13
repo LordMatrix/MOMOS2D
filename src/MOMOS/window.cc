@@ -1,6 +1,7 @@
 #include <MOMOS/window.h>
 #include <MOMOS/momos.h>
 #include <stdio.h>
+#include <MOMOS/resource_manager.h>
 
 namespace MOMOS {
 
@@ -18,7 +19,7 @@ namespace MOMOS {
 		if (action == GLFW_PRESS)
 			last_key_pressed = key;
 
-		//printf("%d\n", last_key_pressed);
+		printf("%d\n", last_key_pressed);
 	}
 
 
@@ -74,6 +75,11 @@ namespace MOMOS {
 		//Set input callback
 		glfwSetKeyCallback(win, key_callback);
 		glfwSetMouseButtonCallback(win, mouse_button_callback);
+
+		ResourceManager::initSpriteShader();
+
+		//Hide cursor by default
+		WindowSetMouseVisibility(false);
 	}
 
 
@@ -110,7 +116,11 @@ namespace MOMOS {
 
 
 	void WindowSetMouseVisibility(bool visible) {
-
+		if (visible) {
+			glfwSetInputMode(MOMOS::win, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		} else {
+			glfwSetInputMode(MOMOS::win, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		}
 	}
 
 }
