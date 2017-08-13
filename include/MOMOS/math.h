@@ -24,6 +24,7 @@ namespace MOMOS {
   Mat3 Mat3Rotate(float radians);
   void Mat3InitAsRotate(float radians, Mat3* mat);
   Mat3 Mat3Scale(float scale_x, float scale_y);
+  void Mat3InitAsScale(float scale_x, float scale_y, Mat3* mat);
   Mat3 Mat3FromColumns(const float data[9]);
   Vec3 Mat3TransformVec3(const Mat3 &a, const Vec3 &v);
   Vec2 Mat3TransformVec2(const Mat3 &a, const Vec2  &v);

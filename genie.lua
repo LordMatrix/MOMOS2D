@@ -26,6 +26,7 @@ project "Momos2D"
 		
 		path.join(PROJ_DIR, "src/deps/chipmunk-7.0.1/include/"),
 		path.join(PROJ_DIR, "src/deps/SOIL/src/"),
+		path.join(PROJ_DIR, "src/deps/sqlite3/"),
 	}
 
 	files {
@@ -49,6 +50,30 @@ project "Momos2D"
 		
 		path.join(PROJ_DIR, "src/deps/SOIL/src/*.c"),
 		path.join(PROJ_DIR, "src/deps/SOIL/src/*.h"),
+		
+		path.join(PROJ_DIR, "src/deps/sqlite3/*.c"),
+		path.join(PROJ_DIR, "src/deps/sqlite3/*.h"),
+		
+		--[[
+		path.join(PROJ_DIR, "src/TweenLib/Action/*.cc"),
+		path.join(PROJ_DIR, "src/TweenLib/Action/*.h"),
+		path.join(PROJ_DIR, "src/TweenLib/Misc/*.cc"),
+		path.join(PROJ_DIR, "src/TweenLib/Misc/*.h"),
+		path.join(PROJ_DIR, "src/TweenLib/Object/*.cc"),
+		path.join(PROJ_DIR, "src/TweenLib/Object/*.h"),
+		]]
+		
+		--[[
+		path.join(PROJ_DIR, "src/WinsockArena/*.h"),
+		path.join(PROJ_DIR, "src/WinsockArena/*.cc"),
+		]]
+		
+		path.join(PROJ_DIR, "src/Gravity/include/*.h"),
+		path.join(PROJ_DIR, "src/Gravity/include/Pieces/*.h"),
+		path.join(PROJ_DIR, "src/Gravity/Include/Screens/*.h"),
+		path.join(PROJ_DIR, "src/Gravity/src/*.cc"),
+		path.join(PROJ_DIR, "src/Gravity/src/Pieces/*.cc"),
+		path.join(PROJ_DIR, "src/Gravity/src/Screens/*.cc"),
 	}
   
   

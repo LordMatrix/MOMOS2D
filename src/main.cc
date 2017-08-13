@@ -32,9 +32,6 @@ int main(int argc, char** argv) {
 
 
 
-
-	ResourceManager::initSpriteShader();
-
 	MOMOS::SpriteHandle cro = MOMOS::SpriteFromFile("src/JanKenPon/assets/flags/CRO.jpg");
 	MOMOS::SpriteHandle esat = MOMOS::SpriteFromFile("src/JanKenPon/assets/flags/ESAT.jpg");
 
